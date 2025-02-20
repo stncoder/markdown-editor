@@ -1,0 +1,45 @@
+.editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+.editor {
+  width: 95%;
+  height: 500px; 
+  padding: 15px;
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  resize: vertical; 
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 600px;
+}
+.editor:focus {
+  border-color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+.editor::placeholder {
+  color: #999;
+  font-style: italic;
+}
+@media (max-width: 768px) {
+  .editor-container {
+    padding: 10px;
+  }
+
+  .editor {
+    height: 300px; 
+    font-size: 14px;
+  }
+}

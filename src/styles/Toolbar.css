@@ -1,0 +1,123 @@
+.toolbar {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 12px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  flex-wrap: wrap; 
+  transition: all 0.3s ease; 
+}
+
+.toolbar:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.toolbar button {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 8px; 
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 auto; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.toolbar button:hover {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+}
+
+.toolbar button:active {
+  transform: translateY(0); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  flex: 1 1 auto;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  z-index: 1;
+  display: none; 
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  transition: all 0.3s ease; 
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex; 
+}
+
+.dropdown-content button {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px; 
+  background-color: #f9f9f9;
+  color: #333;
+  text-align: left;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content button:hover {
+  background-color: #f0f0f0;
+  transform: translateX(5px); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+@media (max-width: 768px) {
+  .toolbar {
+    gap: 8px; 
+    padding: 8px;
+  }
+
+  .toolbar button {
+    padding: 8px 12px; 
+    font-size: 12px;
+    flex: 1 1 45%; 
+  }
+
+  .dropdown {
+    flex: 1 1 45%; 
+  }
+
+  .dropdown-content {
+    width: 100%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar button {
+    flex: 1 1 100%; 
+  }
+
+  .dropdown {
+    flex: 1 1 100%; 
+  }
+}
