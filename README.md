@@ -2,7 +2,7 @@
 
 
 **Other Languages:**
-- [Русский](README.md)
+- [Русский](README.ru.md)
 ---
 
  **Markdown Editor** - s a simple and user-friendly web application for writing and previewing text in Markdown format.
