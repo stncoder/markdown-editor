@@ -1,4 +1,10 @@
-# Markdown Editor
+<h1 align="center">Markdown Editor</h1>
+
+
+**Other Languages:**
+- [Русский](README.ru.md)
+---
+
  **Markdown Editor** - s a simple and user-friendly web application for writing and previewing text in Markdown format.
 ***
 
@@ -35,5 +41,6 @@ Open your browser and go to - http://localhost:3000
 ***
 
 # Author
-stncoder - 
-[Github](https://github.com/stncoder) / [GitVerse](https://gitverse.ru/stncoder) 
+*stncoder - [Github](https://github.com/stncoder)* 
+
+License - [MIT](LICENSE)
