@@ -1,56 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import '../styles/Editor.css';
 
 function Editor({ markdown, onMarkdownChange }) {
   const handleKeyDown = (e) => {
     if (e.ctrlKey || e.metaKey) {
-      switch (e.key) {
-        case '1': 
-          onMarkdownChange(markdown + '# ');
-          e.preventDefault(); 
+      const { selectionStart, selectionEnd } = e.target;
+      const selectedText = markdown.slice(selectionStart, selectionEnd);
+
+      const modifyText = (newText) => {
+        const beforeText = markdown.slice(0, selectionStart);
+        const afterText = markdown.slice(selectionEnd);
+        onMarkdownChange(beforeText + newText + afterText);
+        e.preventDefault();
+      };
+
+      switch (e.key.toLowerCase()) {
+        case '1':
+          modifyText(selectedText ? `# ${selectedText}` : '# ');
           break;
-        case '2': 
-          onMarkdownChange(markdown + '## ');
-          e.preventDefault();
+        case '2':
+          modifyText(selectedText ? `## ${selectedText}` : '## ');
           break;
-        case 'b': 
-          onMarkdownChange(markdown + '**Bold Text**');
-          e.preventDefault();
+        case 'b':
+          modifyText(selectedText ? `**${selectedText}**` : '**Bold Text**');
           break;
-          case 'b': 
-          onMarkdownChange(markdown + '***Bold Italics***');
-          e.preventDefault();
+        case 'i':
+          modifyText(selectedText ? `*${selectedText}*` : '*Italics*');
           break;
-        case 'i': 
-          onMarkdownChange(markdown + '*Italics*');
-          e.preventDefault();
+        case 'l':
+          modifyText(selectedText ? `[${selectedText}](https://)` : '[Link](https://)');
           break;
-        case 'l': 
-          onMarkdownChange(markdown + '[Link](https://)');
-          e.preventDefault();
+        case 'k':
+          modifyText(selectedText ? `\`\`\`\n${selectedText}\n\`\`\`` : '```\nBlock Code\n```');
           break;
-        case 'k': 
-          onMarkdownChange(markdown + '```\nBlock Code\n```');
-          e.preventDefault();
+        case '6':
+          modifyText(selectedText ? `\`${selectedText}\`` : '`code`');
           break;
-          case '6': 
-          onMarkdownChange(markdown + '`code`');
-          e.preventDefault();
+        case ';':
+          modifyText(selectedText ? `- ${selectedText.split('\n').join('\n- ')}` : '- One\n- Two\n- Three\n');
           break;
-        case 'v': 
-          onMarkdownChange(markdown + '- One\n- Two\n- Three\n ');
-          e.preventDefault();
+        case 'o':
+          modifyText(selectedText ? `1. ${selectedText}` : '1.');
           break;
-        case 'o': 
-          onMarkdownChange(markdown + '1.');
-          e.preventDefault();
-          break;
-        case 's': 
-          onMarkdownChange(markdown + '~~Зачёркнутый текст~~');
-          e.preventDefault();
+        case 's':
+          modifyText(selectedText ? `~~${selectedText}~~` : '~~Strikethrough Text~~');
           break;
         default:
-          break;
+          return; // Не предотвращаем стандартное поведение для других комбинаций
       }
     }
   };
@@ -62,7 +58,7 @@ function Editor({ markdown, onMarkdownChange }) {
         className="editor"
         value={markdown}
         onChange={(e) => onMarkdownChange(e.target.value)}
-        onKeyDown={handleKeyDown} 
+        onKeyDown={handleKeyDown}
         placeholder="Start writing Markdown here...
 Example:
 # Header

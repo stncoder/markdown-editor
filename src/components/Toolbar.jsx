@@ -21,7 +21,9 @@ function Toolbar({ markdown, setMarkdown }) {
         listSyntax = '- One\n- Two\n- Three\n ';
         break;
       case 'ordered':
-        listSyntax = '1.\n';
+        listSyntax = '1. One\n2. Two\n3. Three\n';
+        break;
+        default:
         break;
     }
     addFormatting(listSyntax);
@@ -59,7 +61,7 @@ function Toolbar({ markdown, setMarkdown }) {
       <button onClick={() => addFormatting('[Link](https://)')}>Link</button>
       <button onClick={() => addFormatting('![Link](https://)')}>Image Link</button>
       <button onClick={() => addFormatting('`\nCode\n`')}>Code</button>
-      <button onClick={() => addFormatting('```\nBlock Code\n```')}>Block Code</button>
+      <button onClick={() => addFormatting('```\nBlock \nCode\n```')}>Block Code</button>
       <button onClick={() => addFormatting('---')}>Line</button>
     </div>
   );
